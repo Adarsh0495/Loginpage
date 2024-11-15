@@ -10,17 +10,18 @@ export class SignupComponent {
   username:string='';
   password:string='';
 
-  constructor(private router:Router){
-  }
+  constructor(private router:Router){}
 
   onSubmit(){
-    if (this.username.trim() === '' || this.password.trim() === '') {
-      console.error('Login ID and password are required.');
-      return;
+
+  if(!this.username||!this.password){
+    alert('username and password are required');
+    return;
     }
-    
-    console.log('User signed up:',this.username);
+    localStorage.setItem('user',this.username);
     this.router.navigate(['/login'])
-    
+ 
+
+    }
   }
-}
+

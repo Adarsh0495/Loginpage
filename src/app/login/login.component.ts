@@ -12,12 +12,13 @@ export class LoginComponent {
   password:string=''
   constructor(private router:Router){}
   onlogin(){
-    if (this.loginid.trim() === '' || this.password.trim() === '') {
-      console.error('Login ID and password are required.');
-      return;
-    }
-    console.log('login id is:',this.loginid);
-    this.router.navigate(['/home'])
-    
+    const storeduserid=localStorage.getItem('user');
+    if(this.loginid===storeduserid){
+      this.router.navigate(['/home'])
+     }
+     else{
+      alert('invlid username')
+     }
+    } 
   }
-}
+
